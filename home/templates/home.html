@@ -1,0 +1,51 @@
+{% extends 'base.html'%}
+
+{% block title %} Seja Bem-Vindo {% endblock %}
+
+{% block main %}
+
+    <div class="row">
+        <div class="col-md">
+
+        </div>
+        <div class="col-6">
+          <p></p>
+            <h2>Seja Bem-Vindo!</h2>
+
+        </div>
+        <div class="col-md">
+            {% if user.is_authenticated %}
+            <p> Olá {{ user.username }}!
+            </p>
+            <p><a href = "{% url 'prod_new'%}" class ="btn btn-primary btn-sm">
+                <i class ="fa fa-user-plus" ></i> Novo Produto
+            </a>
+            </p>
+            <p>
+            <a href = "{% url 'prod_list'%}" class ="btn btn-warning btn-sm">
+                <i class ="fa fa-align-justify"></i> Produtos
+            </a>
+            </p>
+            <p>
+            <a href = "{% url 'logout' %}" class ="btn btn-secondary btn-sm"> Sair
+            <i class ="fa fa-power-off"></i>
+            </a></p>
+
+            {% else %}
+            <br>
+            <a href="{% url 'login' %}" class="btn btn-info btn-sm"> Entrar <i class="fa fa-arrow-right"></i>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+
+
+{% endblock %}
+
+    {% block footer %}
+    <footer class="newfooter">
+      <div class="container">
+        <span class="text-muted">Desenvolvimento web com Django 2.x</span>
+      </div>
+    </footer>
+    {% endblock %}
